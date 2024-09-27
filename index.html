@@ -1,0 +1,251 @@
+<html>
+  <head>
+    <title>Tic Tac Toe Game</title>
+    <style>
+      .main-container {
+        padding-left: 550px;
+        padding-top: 70px;
+      }
+      button {
+        height: 40px;
+        width: 40px;
+        background-color: rgb(246, 247, 247);
+        border: none;
+        cursor: pointer;
+      }
+
+      .row {
+        display: flex;
+        margin: 3px;
+        gap: 3px;
+      }
+
+      .restart {
+        margin: 20px 0 0 15px;
+        padding: 10px;
+        width: 100px;
+        height: 40px;
+        background-color: rgb(222, 229, 231);
+        font-size: larger;
+        border: 1px solid rgb(148, 211, 231);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="row">
+        <button id="button1" onclick="button1Clicked()"></button>
+        <button id="button2" onclick="button2Clicked()"></button>
+        <button id="button3" onclick="button3Clicked()"></button>
+      </div>
+      <div class="row">
+        <button id="button4" onclick="button4Clicked()"></button>
+        <button id="button5" onclick="button5Clicked()"></button>
+        <button id="button6" onclick="button6Clicked()"></button>
+      </div>
+      <div class="row">
+        <button id="button7" onclick="button7Clicked()"></button>
+        <button id="button8" onclick="button8Clicked()"></button>
+        <button id="button9" onclick="button9Clicked()"></button>
+      </div>
+      <div>
+        <button class="restart" id="restart">Restart</button>
+        <div id="Which_players_move"></div>
+        <div id="winner_message"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let button1 = document.getElementById("button1");
+    let button2 = document.getElementById("button2");
+    let button3 = document.getElementById("button3");
+    let button4 = document.getElementById("button4");
+    let button5 = document.getElementById("button5");
+    let button6 = document.getElementById("button6");
+    let button7 = document.getElementById("button7");
+    let button8 = document.getElementById("button8");
+    let button9 = document.getElementById("button9");
+    let restart = document.getElementById("restart");
+
+    let winner_message = document.getElementById("winner_message");
+
+    let Which_players_move = document.getElementById("Which_players_move");
+
+    let temp;
+    function checkTemp() {
+      if (temp == "X") {
+        temp = "0";
+      } else if (temp == "0") {
+        temp = "X";
+      } else {
+        temp = "X";
+      }
+    }
+
+    let arr = Array.from({ length: 9 }, (_, i) => i + 1);
+
+    function checkResult() {
+      if (
+        (arr[0] === arr[1] && arr[1] === arr[2]) ||
+        (arr[3] === arr[4] && arr[4] === arr[5]) ||
+        (arr[6] === arr[7] && arr[7] === arr[8]) ||
+        (arr[0] === arr[3] && arr[3] === arr[6]) ||
+        (arr[1] === arr[4] && arr[4] === arr[7]) ||
+        (arr[2] === arr[5] && arr[5] === arr[8]) ||
+        (arr[0] === arr[4] && arr[4] === arr[8]) ||
+        (arr[2] === arr[4] && arr[4] === arr[6])
+      ) {
+        console.log("Winner @@@@", temp);
+        winner_message.innerHTML = `<h1> winner is player ${temp} </h1>`;
+        disabledAllButtons();
+      } else {
+        console.log("continue..");
+      }
+    }
+
+    function disabledAllButtons() {
+      button1.disabled = true;
+      button2.disabled = true;
+      button3.disabled = true;
+      button4.disabled = true;
+      button5.disabled = true;
+      button6.disabled = true;
+      button7.disabled = true;
+      button8.disabled = true;
+      button9.disabled = true;
+    }
+
+    function button1Clicked() {
+      if (button1.disabled === false) {
+        checkTemp();
+        button1.innerText = temp;
+        arr[0] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button1.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button2Clicked() {
+      if (button2.disabled === false) {
+        checkTemp();
+        button2.innerText = temp;
+        arr[1] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button2.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button3Clicked() {
+      if (button3.disabled === false) {
+        checkTemp();
+        button3.innerText = temp;
+        arr[2] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button3.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button4Clicked() {
+      if (button4.disabled === false) {
+        checkTemp();
+        button4.innerText = temp;
+        arr[3] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button4.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button5Clicked() {
+      if (button5.disabled === false) {
+        checkTemp();
+        button5.innerText = temp;
+        arr[4] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button5.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button6Clicked() {
+      if (button6.disabled === false) {
+        checkTemp();
+        button6.innerText = temp;
+        arr[5] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button6.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button7Clicked() {
+      if (button7.disabled === false) {
+        checkTemp();
+        button7.innerText = temp;
+        arr[6] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button7.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button8Clicked() {
+      if (button8.disabled === false) {
+        checkTemp();
+        button8.innerText = temp;
+        arr[7] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button8.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function button9Clicked() {
+      if (button9.disabled === false) {
+        checkTemp();
+        button9.innerText = temp;
+        arr[8] = temp;
+        console.log("arr ##", arr);
+        checkResult();
+        button9.disabled = true;
+        Which_players_move.innerHTML = `<h2>Players ${
+          temp === "X" ? "0" : "X"
+        } move</h2>`;
+      }
+    }
+
+    function restartFunc() {
+      document.location.reload();
+    }
+
+    restart.onclick = restartFunc;
+  </script>
+</html>
