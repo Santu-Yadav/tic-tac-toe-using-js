@@ -30,6 +30,11 @@
         border: 1px solid rgb(148, 211, 231);
         cursor: pointer;
       }
+
+      .winner_message {
+        font-weight: 700;
+        color: blue;
+      }
     </style>
   </head>
   <body>
@@ -96,11 +101,12 @@
         (arr[0] === arr[4] && arr[4] === arr[8]) ||
         (arr[2] === arr[4] && arr[4] === arr[6])
       ) {
-        console.log("Winner @@@@", temp);
-        winner_message.innerHTML = `<h1> winner is player ${temp} </h1>`;
+        Which_players_move.innerHTML = `<h1 class="winner_message"> winner is player ${temp} </h1>`;
+        // console.log("Winner @@@@", temp);
+
         disabledAllButtons();
       } else {
-        console.log("continue..");
+        // console.log("continue..");
       }
     }
 
@@ -116,131 +122,54 @@
       button9.disabled = true;
     }
 
-    function button1Clicked() {
-      if (button1.disabled === false) {
+    function handleButtonClick(button, index) {
+      if (!button.disabled) {
         checkTemp();
-        button1.innerText = temp;
-        arr[0] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button1.disabled = true;
+        button.innerText = temp;
+        arr[index] = temp;
         Which_players_move.innerHTML = `<h2>Players ${
           temp === "X" ? "0" : "X"
         } move</h2>`;
+        button.disabled = true;
+        checkResult();
       }
     }
 
-    function button2Clicked() {
-      if (button2.disabled === false) {
-        checkTemp();
-        button2.innerText = temp;
-        arr[1] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button2.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button1.addEventListener("click", function () {
+      handleButtonClick(button1, 0);
+    });
 
-    function button3Clicked() {
-      if (button3.disabled === false) {
-        checkTemp();
-        button3.innerText = temp;
-        arr[2] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button3.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button2.addEventListener("click", function () {
+      handleButtonClick(button2, 1);
+    });
 
-    function button4Clicked() {
-      if (button4.disabled === false) {
-        checkTemp();
-        button4.innerText = temp;
-        arr[3] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button4.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button3.addEventListener("click", function () {
+      handleButtonClick(button3, 2);
+    });
 
-    function button5Clicked() {
-      if (button5.disabled === false) {
-        checkTemp();
-        button5.innerText = temp;
-        arr[4] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button5.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button4.addEventListener("click", function () {
+      handleButtonClick(button4, 3);
+    });
 
-    function button6Clicked() {
-      if (button6.disabled === false) {
-        checkTemp();
-        button6.innerText = temp;
-        arr[5] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button6.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button5.addEventListener("click", function () {
+      handleButtonClick(button5, 4);
+    });
 
-    function button7Clicked() {
-      if (button7.disabled === false) {
-        checkTemp();
-        button7.innerText = temp;
-        arr[6] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button7.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button6.addEventListener("click", function () {
+      handleButtonClick(button6, 5);
+    });
 
-    function button8Clicked() {
-      if (button8.disabled === false) {
-        checkTemp();
-        button8.innerText = temp;
-        arr[7] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button8.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button7.addEventListener("click", function () {
+      handleButtonClick(button7, 6);
+    });
 
-    function button9Clicked() {
-      if (button9.disabled === false) {
-        checkTemp();
-        button9.innerText = temp;
-        arr[8] = temp;
-        console.log("arr ##", arr);
-        checkResult();
-        button9.disabled = true;
-        Which_players_move.innerHTML = `<h2>Players ${
-          temp === "X" ? "0" : "X"
-        } move</h2>`;
-      }
-    }
+    button8.addEventListener("click", function () {
+      handleButtonClick(button8, 7);
+    });
+
+    button9.addEventListener("click", function () {
+      handleButtonClick(button9, 8);
+    });
 
     function restartFunc() {
       document.location.reload();
